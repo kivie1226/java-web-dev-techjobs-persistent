@@ -12,7 +12,6 @@ import java.util.List;
 @Entity
 public class Employer extends AbstractEntity {
 
-    @NotNull(message="Location is required.")
     @NotBlank(message="Location is required.")
     @Size(min=1, max = 100)
     private String location;
@@ -32,10 +31,19 @@ public class Employer extends AbstractEntity {
         this.location = location;
     }
 
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
+
     //Setting up one to many relationship
-    @OneToMany()
+    @OneToMany
     @JoinColumn
     private List<Job> jobs = new ArrayList<>();
+
 
     //No-arg constructor
     public Employer() {}
