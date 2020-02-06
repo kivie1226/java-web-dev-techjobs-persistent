@@ -18,6 +18,7 @@ public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
 
+
     @GetMapping
     public String displayAllEmployers(Model model) {
         model.addAttribute("title", "All Employers");
@@ -33,7 +34,7 @@ public class EmployerController {
 
     @PostMapping("add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
-                                         Errors errors, Model model) {
+                                         Errors errors) {
 
         if (errors.hasErrors()) {
             return "employers/add";
@@ -44,6 +45,7 @@ public class EmployerController {
 
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
+
         Optional optEmployer = employerRepository.findById(employerId);
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();

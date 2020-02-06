@@ -10,9 +10,16 @@ import java.util.List;
 
 @Entity
 public class Employer extends AbstractEntity {
+
     @NotNull(message="Location is required.")
     @Size(max = 100)
     public String location;
+
+    public Employer(String location) {
+        super();
+        this.location = location;
+        this.jobs = jobs;
+    }
 
     //Getters and setters:
 
@@ -25,8 +32,7 @@ public class Employer extends AbstractEntity {
     }
 
     //Setting up one to many relationship
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy = "employer")
     private List<Job> jobs = new ArrayList<>();
 
     //No-arg constructor

@@ -50,7 +50,7 @@ public class JobData {
         if (fieldName.equals("name")){
             theValue = job.getName();
         } else if (fieldName.equals("employer")){
-            theValue = job.getEmployer().toString();
+            theValue = job.getSkills().toString();
         } else {
             theValue = job.toString();
         }

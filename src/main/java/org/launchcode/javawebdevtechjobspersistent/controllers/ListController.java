@@ -1,3 +1,4 @@
+
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
@@ -23,10 +24,12 @@ public class ListController {
 
     @Autowired
     private JobRepository jobRepository;
-    @Autowired
-    private EmployerRepository employerRepository;
+
     @Autowired
     private SkillRepository skillRepository;
+
+    @Autowired
+    private EmployerRepository employerRepository;
 
     static HashMap<String, String> columnChoices = new HashMap<>();
 
@@ -40,7 +43,8 @@ public class ListController {
 
     @RequestMapping("")
     public String list(Model model) {
-        model.addAttribute("employers", employerRepository.findAll());
+        model.addAttribute("all", "viewAll");
+        model.addAttribute("employers",employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
         return "list";
     }
