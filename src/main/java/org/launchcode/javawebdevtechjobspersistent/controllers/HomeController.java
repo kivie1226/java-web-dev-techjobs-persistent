@@ -74,7 +74,7 @@ public class HomeController {
             return "view";
         } else  {
             model.addAttribute("jobs", jobRepository.findAll());
-            return "redirect:../";
+            return "redirect:";
         }
 
     }
