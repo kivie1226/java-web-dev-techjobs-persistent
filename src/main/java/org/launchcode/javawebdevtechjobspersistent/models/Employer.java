@@ -40,8 +40,7 @@ public class Employer extends AbstractEntity {
     }
 
     //Setting up one to many relationship
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy="employer")
     private List<Job> jobs = new ArrayList<>();
 
 
